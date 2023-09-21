@@ -1,0 +1,43 @@
+steps:
+  # Step 1: Install or update the required Node.js packages in your project directory
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["install", "--save", "--legacy-peer-deps", "react-kawaii"]
+
+  # Step 2: Navigate to the 'functions' directory
+  - name: "gcr.io/cloud-builders/cd"
+    args: ["functions"]
+
+  # Step 3: Install Node.js packages for the 'functions' directory
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["install"]
+
+  # Step 4: Add secrets as explained in your "Handling Secrets" process
+  # (You'll need to provide details on how this is done)
+
+  # Step 5: Build the functions
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["run", "build"]
+
+  # Step 6: Return to the project root directory
+  - name: "gcr.io/cloud-builders/cd"
+    args: [".."]
+
+  # Step 7: Build the entire project (assuming you have a build script in your project's package.json)
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["run", "build"]
+
+  # Step 8: Deploy your Google Cloud Function
+  # Use the 'gcloud functions deploy' command with the appropriate options
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      - "functions"
+      - "deploy"
+      - "functions"
+      - "--runtime=nodejs16"
+      - "--trigger-http"
+      - "--allow-unauthenticated"
+      - "--region=asia-south1" # Specify your desired region
+      - "--project=testswap-690dd" # Replace with your project ID
+
+
+  # Step 9: Monitor and verify your deployed function in the Google Cloud Console

@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "testswap-690dd",
+    "atomic-swap-124d0": "testswap-690dd",
+    "testswap": "testswap-690dd"
+  },
+  "targets": {},
+  "etags": {}
+}
