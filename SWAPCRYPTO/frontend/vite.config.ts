@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => {
       host: true,
       proxy: {
         "/api": {
-          target: "http://127.0.0.1:5001/testswap-690dd/us-central1/main",
+          target: " https://us-central1-testswap-690dd.cloudfunctions.net/main",
         },
       },
     },
